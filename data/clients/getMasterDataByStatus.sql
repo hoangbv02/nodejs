@@ -1,0 +1,1 @@
+select * from MasterDatas where MasterName = @status

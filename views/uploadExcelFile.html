@@ -1,0 +1,33 @@
+<html>
+  <header>
+    <meta name="viewport" content="devide-width, initial-scale = 1.0" />
+    <title>File upload excel</title>
+    <style>
+      .container {
+        text-align: center;
+        width: 100%;
+      }
+    </style>
+  </header>
+  <body>
+    <div class="container">
+      <h1>File Upload Excel</h1>
+      <h3>Single file upload</h3>
+      <form
+        action="uploadExcelFile"
+        method="post"
+        enctype="multipart/form-data"
+        id="uploadForm1"
+      >
+        <input
+          type="file"
+          name="sampleFile1"
+          required
+          accept=".xlsx, .xls"
+          multiple
+        />
+        <input type="submit" value="Upload File" />
+      </form>
+    </div>
+  </body>
+</html>

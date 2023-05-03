@@ -1,0 +1,33 @@
+<html>
+  <header>
+    <meta name="viewport" content="devide-width, initial-scale = 1.0" />
+    <title>File upload</title>
+    <style>
+      .container {
+        text-align: center;
+        width: 100%;
+      }
+    </style>
+  </header>
+  <body>
+    <div class="container">
+      <h1>File Upload</h1>
+      <h3>Multiple File upload</h3>
+      <form
+        action="multipleFile"
+        method="post"
+        enctype="multipart/form-data"
+        id="uploadForm"
+      >
+        <input
+          type="file"
+          name="sampleFile"
+          required
+          accept="image/jpeg, image/png"
+          multiple
+        />
+        <input type="submit" value="Upload File" />
+      </form>
+    </div>
+  </body>
+</html>

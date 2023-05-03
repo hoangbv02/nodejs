@@ -1,0 +1,58 @@
+USE [Aspire]
+GO
+
+/****** Object:  Table [dbo].[events]    Script Date: 2023/02/11 15:28:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[events](
+	[eventId] [int] IDENTITY(1,1) NOT NULL,
+	[eventTitle] [nvarchar](50) NULL,
+	[eventDescription] [nvarchar](500) NULL,
+	[startDate] [datetime] NULL,
+	[endDate] [datetime] NULL,
+	[avenue] [nvarchar](50) NULL,
+	[maxMember] [int] NULL,
+ CONSTRAINT [PK_events] PRIMARY KEY CLUSTERED 
+(
+	[eventId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [Aspire]
+GO
+
+/****** Object:  Table [dbo].[user_test]    Script Date: 2/17/2023 1:11:51 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[user_test](
+	[userId] [int] IDENTITY(1,1) NOT NULL,
+	[userName] [nvarchar](50) NULL,
+	[password] [nvarchar](1000) NULL,
+ CONSTRAINT [PK_user_test] PRIMARY KEY CLUSTERED 
+(
+	[userId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+NOTE Transaction:
+Hàm A chạy tra ra X
+hàm B chạy tra ra Y
+Hàm C chạy tra ra Z
+
+A) Nếu dùng kết quả of X để làm input cho Y
+thì dùng transaction sẽ ko chính xác
+vì transaction nó cần commit transaction mới apply vào DB
+--> ko cần dùng transaction
+
+B) Nếu các X,Y,Z chạy độc lập tức là X,Y,Z không liên quan đến nhau
+--> cần xử lý lồng nhau như câu query trên
